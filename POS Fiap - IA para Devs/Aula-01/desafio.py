@@ -30,7 +30,7 @@ def main():
         X_train, X_test, y_train, y_test = divisao_caracteristica(dados, test_size=0.3, random_state=42)        
         
         # análise exploratória: crie uma pergunta sobre a base de dados e responda através de um gráfico
-        analise_aploratoria(dados)
+        analise_exploratoria(dados)
         
         modelo_rf = treinar_modelo_random_forest(x=X_train, y=y_train, n_estimators=100, random_state=42)
         y_pred_rf = modelo_rf.predict(X_test)
@@ -57,7 +57,7 @@ def importar_dados():
         print(f"Erro ao importar dados: {ex}")
         return None
 
-def analise_aploratoria(dados):
+def analise_exploratoria(dados):
     dados_grouped = dados.groupby(['Curricular units 1st sem (approved)', 'Target']).size().unstack()
     
     plt.figure(figsize=(12,6))
